@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+<!-- Mission to Mars scraping button -->
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Click for Mars information</a></p>
+    </div>
+
+    <!-- Latest news on Mars exploration -->
+    <div class="row" id="Mars_News">
+      <div class="col-md-8">
+        <h1 class="text-primary"><b>Latest Mars News</b></h1>
+          <h3 class="News"><b>{{Mars.News[0]}}</b></h3>
+          <p class="Content lead">{{Mars.News[1]}}</p>
+        
+      </div>
+
+      <!-- Latest Mars weather -->
+      <div class="col-md-4 justify-right border border-primary">
+          
+        <h3 class="text-danger"><b> Weather on Mars </b></h3>
+        <i class="text-danger lead">{{Mars.Weather}}</i>
+  
+      </div>
+     
+    </div>
+    
+    <!-- Featured Mars image -->
+    <div class="row" id="Mars">
+        <div class="col-md-9">  
+          <h3><b>Featured Mars Images</b></h3>
+        
+          <img src={{Mars.Image}} alt="Featured_Mars_Image" width="840" height="560">
+        </div>
+
+        <!-- Mars facts table -->
+        <div class="col-md-3">
+          <div class="card-body">
+            <h3 class="card-title"><b>Mars Facts</b></h3>
+            <div>{{Mars.Facts | safe}}</div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Mars Hemisphere images -->
+    <div class="col-md-12">
+      <h2><b>Mars Hemispheres</b></h2>
+
+    {% for x in range(0,4): %}
+      <div class="row col-md-6">
+        <img src="{{Mars.Hemispheres[x]['image_url']}}" class="card-img-top" alt="Hemisphere_x" width='500' height='500'>
+        <div class="card-body">
+          <h3 class="card-title"><i>{{Mars.Hemispheres[x]['title']}}</i></h3>
+        </div>
+      </div>
+    {% endfor %}
+
+
+  </div>
+
+
+
+
+  
+</body>
+
+</html>
+
